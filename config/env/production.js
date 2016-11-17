@@ -4,7 +4,7 @@ var AWS = require('aws-sdk'),
     sqsKey = env.FEDERALIST_AWS_BUILD_KEY,
     sqsSecret = env.FEDERALIST_AWS_BUILD_SECRET,
     appEnv = cfenv.getAppEnv(),
-    dbURL = appEnv.getServiceURL(`federalist-${process.env.APP_ENV}-rds`),
+    rds = appEnv.getServiceCreds(`federalist-${process.env.APP_ENV}-rds`),
     AWS_S3_CREDS = appEnv.getServiceCreds(`federalist-${process.env.APP_ENV}-s3`),
     redisCreds = appEnv.getServiceCreds(`federalist-${process.env.APP_ENV}-redis`);
 
@@ -36,11 +36,16 @@ module.exports = {
 };
 
 // If running in Cloud Foundry with a service database available, use it
-if (dbURL) {
+if (rds) {
   module.exports.connections = {
     postgres: {
       adapter: 'sails-postgresql',
-      url: dbURL,
+      database: rds.db_name,
+      host: rds.host,
+      user: rds.username,
+      password: rds.password,
+      port: rds.port,
+      port: 5432,
       ssl: true
     }
   };
