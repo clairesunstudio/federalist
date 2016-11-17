@@ -39,7 +39,8 @@ if (dbURL) {
   module.exports.connections = {
     postgres: {
       adapter: 'sails-postgresql',
-      url: dbURL
+      url: dbURL,
+      ssl: true
     }
   };
   module.exports.models = {
