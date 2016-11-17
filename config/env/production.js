@@ -46,7 +46,7 @@ if (rds) {
       password: rds.password,
       port: rds.port,
       port: 5432,
-      ssl: true
+      ssl: false
     }
   };
   module.exports.models = {
