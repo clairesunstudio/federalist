@@ -73,17 +73,17 @@ if (sqsKey && sqsSecret && AWS_S3_CREDS) {
   throw new Error('No SQS or S3 credentials found.');
 }
 
-// // If running in Cloud Foundry with a redis service
-// if (redisCreds) {
-//   session = _.extend({}, session, {
-//     adapter: 'redis',
-//     host: redisCreds.hostname,
-//     port: redisCreds.port,
-//     db: 0,
-//     pass: redisCreds.password
-//   });
-// } else {
-//   throw new Error('No redis credentials found.');
-// }
+// If running in Cloud Foundry with a redis service
+if (redisCreds) {
+  session = _.extend({}, session, {
+    adapter: 'redis',
+    host: redisCreds.hostname,
+    port: redisCreds.port,
+    db: 0,
+    pass: redisCreds.password
+  });
+} else {
+  throw new Error('No redis credentials found.');
+}
 
 module.exports.session = session;
