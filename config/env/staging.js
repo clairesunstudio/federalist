@@ -44,6 +44,7 @@ if (rds) {
       user: rds.username,
       password: rds.password,
       port: rds.port,
+      poolSize: 2,
       ssl: false
     }
   };
