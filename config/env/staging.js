@@ -71,22 +71,22 @@ if (AWS_SQS_CREDS && AWS_S3_CREDS) {
 }
 
 // If running in Cloud Foundry with a redis service
-if (redisCreds) {
-  session = _.extend({}, session, {
-    adapter: 'redis',
-    host: redisCreds.hostname,
-    port: redisCreds.port,
-    db: 0,
-    pass: redisCreds.password
-  });
+// if (redisCreds) {
+//   session = _.extend({}, session, {
+//     adapter: 'redis',
+//     host: redisCreds.hostname,
+//     port: redisCreds.port,
+//     db: 0,
+//     pass: redisCreds.password
+//   });
 
-  module.exports.sockets = {
-    adapter: 'socket.io-redis',
-    host: redisCreds.hostname,
-    port: redisCreds.port,
-    db: 1,
-    pass: redisCreds.password
-  };
-}
+//   module.exports.sockets = {
+//     adapter: 'socket.io-redis',
+//     host: redisCreds.hostname,
+//     port: redisCreds.port,
+//     db: 1,
+//     pass: redisCreds.password
+//   };
+// }
 
 module.exports.session = session;
