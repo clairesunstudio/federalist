@@ -7,7 +7,7 @@ then
   CF_SPACE="prod"
   CF_APP="federalist"
   CF_MANIFEST="manifest.yml"
-elif [[ "$TRAVIS_BRANCH" =~ ^[staging]-?.*$ ]]
+elif [[ "$TRAVIS_BRANCH" =~ ^[jmhooper-update-buildpack]-?.*$ ]]
 then
   CF_SPACE="staging"
   CF_APP="federalist-staging"
